@@ -1,3 +1,34 @@
+//data types in javascript
+
+//string 
+var ball = "myname";
+console.log(ball);
+
+//number
+var blue = 3;
+console.log(blue);
+
+//boolean
+var glass = true;
+console.log(glass);
+
+//undefined
+var object 
+console.log(object);
+
+//null
+var book = null;
+console.log(book);
+
+//array
+var red = [1,2,3,4,5];
+console.log(red);
+var k = [true, 4, "green"];
+console.log(k); 
+var a = [[2,5,7],[false,"apple"]];
+console.log(a);
+console.log(a[0][2]);
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -8,6 +39,7 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+var gamestate = "playing";
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,12 +101,15 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gamestate === "playing"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gamestate = "end";
 }
 
 function keyPressed(){
